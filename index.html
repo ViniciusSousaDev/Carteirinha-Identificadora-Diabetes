@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<main class="container">
+<main class="container fade-in" id="mainContent">
 <h1>Gerador de Carteirinha — Diabetes</h1>
 
 
@@ -36,40 +36,55 @@
 
 
 <label>Contato de emergência
-<input type="text" id="emergencyContact" maxlength="40" placeholder="(xx) xxxx-xxxx — contato">
+<input type="text" id="emergencyContact" maxlength="15" placeholder="(xx) xxxxx-xxxx">
 </label>
 
 
-<label>Observações (alergias, bomba, etc.)
+<label>Observações
 <textarea id="notes" maxlength="200" placeholder="Ex.: usa bomba de insulina, alérgico a penicilina"></textarea>
 </label>
 
 
+<label>Estilo da carteirinha
+<select id="cardStyle">
+<option value="classic">Clássico (vermelho)</option>
+<option value="blue">Azul</option>
+<option value="green">Verde</option>
+</select>
+</label>
+
+
 <div class="actions">
-<button type="button" id="previewBtn">Visualizar</button>
 <button type="button" id="generateBtn">Gerar PDF</button>
 </div>
 </form>
 
 
 <section aria-label="Pré-visualização da carteirinha">
-<h2>Pré-visualização</h2>
+<h2>Pré-visualização em tempo real</h2>
 <div id="cardPreviewWrapper">
-<div id="cardPreview" class="card">
-<!-- Conteúdo gerado pelo JS -->
+<div id="cardPreview" class="card classic">
+<!-- Conteúdo gerado em tempo real -->
 </div>
 </div>
 </section>
 
 
-<p class="note">Observação: nenhum dado é enviado a servidores; o PDF é gerado no seu navegador.</p>
+<p class="note">Nenhum dado é salvo. Tudo é gerado localmente no seu navegador.</p>
 </main>
 
 
-<!-- Bibliotecas via CDN -->
+<section id="thankYouScreen" class="hidden fade-in">
+<div class="thankYou">
+<h2>Carteirinha gerada com sucesso! 🎉</h2>
+<p>Cuide-se bem! Lembre-se de monitorar sua glicemia e manter hábitos saudáveis. A diabetes pode ser desafiadora, mas com informação e cuidado, é possível viver plenamente. ❤️</p>
+<button id="backBtn">Voltar ao início</button>
+</div>
+</section>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,36 +1,39 @@
 :root{
---card-w-mm:85mm; /* largura cartão */
---card-h-mm:55mm; /* altura cartão */
---card-w:340px; /* dependente do zoom; apenas pra preview */
---card-h:220px;
---accent:#d9534f; /* vermelho Saúde */
+--accent:#d9534f;
+--accent-blue:#0275d8;
+--accent-green:#5cb85c;
 --bg:#fff;
 --text:#111;
 }
-*{box-sizing:border-box}
-body{font-family:Inter, system-ui, Arial, sans-serif;background:#f4f6f8;color:var(--text);margin:0;padding:24px}
+body{font-family:Inter, system-ui, Arial, sans-serif;background:#f4f6f8;margin:0;padding:24px;color:var(--text);transition:background 0.4s ease;}
 .container{max-width:880px;margin:0 auto}
-h1{margin-bottom:12px}
+.hidden{display:none}
+
+
+/* Transições suaves */
+.fade-in{opacity:0;animation:fadeIn 0.8s forwards}
+.fade-out{opacity:1;animation:fadeOut 0.6s forwards}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes fadeOut{to{opacity:0}}
+
+
 form{display:grid;gap:8px;grid-template-columns:1fr 1fr}
 form label{display:flex;flex-direction:column;font-size:14px}
-form textarea{min-height:64px}
-.actions{grid-column:1 / -1;display:flex;gap:8px}
-button{padding:10px 14px;border-radius:8px;border:0;background:var(--accent);color:white;cursor:pointer}
-button#previewBtn{background:#6c757d}
-.card{width:var(--card-w);height:var(--card-h);background:var(--bg);border-radius:8px;padding:12px;box-shadow:0 6px 18px rgba(0,0,0,.08);display:flex;flex-direction:column;justify-content:space-between}
-#cardPreviewWrapper{margin-top:12px}
-.card .top{display:flex;gap:12px;align-items:center}
-.card .top .icon{width:48px;height:48px;border-radius:6px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
-.card .title{font-size:18px;font-weight:700}
-.card .body{font-size:14px}
-.card .footer{font-size:12px;color:#333}
-.note{font-size:13px;color:#666;margin-top:10px}
-@media (max-width:720px){form{grid-template-columns:1fr}}
+form textarea{min-height:60px}
+.actions{grid-column:1 / -1;margin-top:8px}
+button{padding:10px 14px;border:none;border-radius:8px;background:var(--accent);color:#fff;cursor:pointer;transition:transform 0.2s ease}
+button:hover{transform:scale(1.03)}
 
 
-/* Impressão: força para o tamanho do cartão (opcional) */
-@media print{
-body *{visibility:hidden}
-#cardPreview, #cardPreview *{visibility:visible}
-#cardPreview{position:fixed;left:0;top:0;width:var(--card-w-mm);height:var(--card-h-mm);box-shadow:none}
-}
+.card{width:340px;height:220px;border-radius:10px;padding:12px;box-shadow:0 6px 18px rgba(0,0,0,.1);background:var(--bg);margin-top:12px;display:flex;flex-direction:column;justify-content:space-between;transition:all 0.3s ease}
+.card.classic .header{background:var(--accent)}
+.card.blue .header{background:var(--accent-blue)}
+.card.green .header{background:var(--accent-green)}
+.card .header{color:white;padding:6px;border-radius:6px;font-weight:bold;}
+.card .body{font-size:14px;margin-top:6px}
+.card .footer{font-size:12px;color:#333;margin-top:8px}
+
+
+.thankYou{max-width:600px;margin:100px auto;text-align:center}
+.thankYou h2{color:var(--accent)}
+#backBtn{background:#6c757d;margin-top:12px}
