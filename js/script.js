@@ -54,8 +54,19 @@ renderCard();
 const canvas = await html2canvas(preview, {scale:2, useCORS:true});
 const imgData = canvas.toDataURL('image/png');
 const { jsPDF } = window.jspdf;
-const pdf = new jsPDF({unit:'mm', format:[85,55]});
-pdf.addImage(imgData,'PNG',0,0,85,55);
+const pdf = new jsPDF({unit:'mm', format:'a4'});
+
+
+const pageWidth = pdf.internal.pageSize.getWidth();
+const pageHeight = pdf.internal.pageSize.getHeight();
+const imgProps = pdf.getImageProperties(imgData);
+const imgWidth = 85; // tamanho real do cartão
+const imgHeight = 55;
+const x = (pageWidth - imgWidth) / 2;
+const y = (pageHeight - imgHeight) / 2;
+
+
+pdf.addImage(imgData,'PNG',x,y,imgWidth,imgHeight);
 pdf.save('carteirinha_diabetes.pdf');
 
 
