@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Carteirinha - Diabetes (Descartável)</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="container">
+<h1>Gerador de Carteirinha — Diabetes</h1>
+
+
+<form id="cardForm" autocomplete="off">
+<label>Nome completo
+<input type="text" id="name" required maxlength="60" placeholder="Seu nome">
+</label>
+
+
+<label>Tipo de diabetes
+<select id="diabetesType">
+<option value="Tipo 1">Tipo 1</option>
+<option value="Tipo 2">Tipo 2</option>
+<option value="Gestacional">Gestacional</option>
+<option value="Outro">Outro</option>
+</select>
+</label>
+
+
+<label>Uso de insulina
+<select id="usesInsulin">
+<option value="Sim">Sim</option>
+<option value="Não">Não</option>
+</select>
+</label>
+
+
+<label>Contato de emergência
+<input type="text" id="emergencyContact" maxlength="40" placeholder="(xx) xxxx-xxxx — contato">
+</label>
+
+
+<label>Observações (alergias, bomba, etc.)
+<textarea id="notes" maxlength="200" placeholder="Ex.: usa bomba de insulina, alérgico a penicilina"></textarea>
+</label>
+
+
+<div class="actions">
+<button type="button" id="previewBtn">Visualizar</button>
+<button type="button" id="generateBtn">Gerar PDF</button>
+</div>
+</form>
+
+
+<section aria-label="Pré-visualização da carteirinha">
+<h2>Pré-visualização</h2>
+<div id="cardPreviewWrapper">
+<div id="cardPreview" class="card">
+<!-- Conteúdo gerado pelo JS -->
+</div>
+</div>
+</section>
+
+
+<p class="note">Observação: nenhum dado é enviado a servidores; o PDF é gerado no seu navegador.</p>
+</main>
+
+
+<!-- Bibliotecas via CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
