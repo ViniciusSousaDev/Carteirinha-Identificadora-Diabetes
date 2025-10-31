@@ -1,78 +1,45 @@
-const inputs = document.querySelectorAll('#cardForm input, #cardForm textarea, #cardForm select');
+const form = document.getElementById("form");
+const gerarBtn = document.getElementById("gerar");
+const baixarBtn = document.getElementById("baixar");
+
+const nomePreview = document.getElementById("nome-preview");
+const tipoPreview = document.getElementById("tipo-preview");
+const insulinaPreview = document.getElementById("insulina-preview");
+const contatoPreview = document.getElementById("contato-preview");
+const observacoesPreview = document.getElementById("observacoes-preview");
+const fotoPreview = document.getElementById("foto-preview");
+
+document.getElementById("foto").addEventListener("change", (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      fotoPreview.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
 });
 
-
-document.getElementById('emergencyContact').addEventListener('input', e => {
-let v = e.target.value.replace(/\D/g,'');
-if(v.length > 11) v = v.slice(0,11);
-if(v.length > 6) e.target.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
-else if(v.length > 2) e.target.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
-else e.target.value = v;
-renderPreview();
-});
-
-
-function renderPreview(){
-document.getElementById('previewName').textContent = document.getElementById('name').value || '—';
-document.getElementById('previewType').textContent = document.getElementById('diabetesType').value;
-document.getElementById('previewInsulin').textContent = document.getElementById('usesInsulin').value || '—';
-document.getElementById('previewContact').textContent = document.getElementById('emergencyContact').value || '—';
-document.getElementById('previewNotes').textContent = document.getElementById('notes').value || '—';
+function atualizarPreview() {
+  nomePreview.textContent = document.getElementById("nome").value || "—";
+  tipoPreview.textContent = document.getElementById("tipo").value || "—";
+  insulinaPreview.textContent = document.getElementById("insulina").value || "—";
+  contatoPreview.textContent = document.getElementById("contato").value || "—";
+  observacoesPreview.textContent = document.getElementById("observacoes").value || "—";
 }
 
+form.addEventListener("input", atualizarPreview);
 
-inputs.forEach(el => el.addEventListener('input', renderPreview));
-renderPreview();
-
-
-async function generateCardAsImage(){
-const card = document.getElementById('cardPreview');
-const canvas = await html2canvas(card, {scale:2, useCORS:true});
-return canvas;
-}
-
-
-generatePdfBtn.addEventListener('click', async ()=>{
-const canvas = await generateCardAsImage();
-const imgData = canvas.toDataURL('image/png');
-const { jsPDF } = window.jspdf;
-const pdf = new jsPDF({unit:'mm', format:'a4'});
-const pageWidth = pdf.internal.pageSize.getWidth();
-const pageHeight = pdf.internal.pageSize.getHeight();
-const cardWidth = 90, cardHeight = 55;
-const x = (pageWidth - cardWidth) / 2;
-const y = (pageHeight - cardHeight) / 2;
-pdf.addImage(imgData,'PNG',x,y,cardWidth,cardHeight);
-pdf.save('carteirinha_diabetes.pdf');
-transitionToThankYou();
+gerarBtn.addEventListener("click", () => {
+  atualizarPreview();
+  alert("Carteirinha gerada com sucesso 🎉");
 });
 
-
-generatePngBtn.addEventListener('click', async ()=>{
-const canvas = await generateCardAsImage();
-const link = document.createElement('a');
-link.download = 'carteirinha_diabetes.png';
-link.href = canvas.toDataURL();
-link.click();
-transitionToThankYou();
-});
-
-
-function transitionToThankYou(){
-mainContent.classList.add('fade-out');
-setTimeout(()=>{
-mainContent.classList.add('hidden');
-thankYouScreen.classList.remove('hidden');
-thankYouScreen.classList.add('fade-in');
-},600);
-}
-
-
-backBtn.addEventListener('click', ()=>{
-thankYouScreen.classList.add('fade-out');
-setTimeout(()=>{
-thankYouScreen.classList.add('hidden');
-mainContent.classList.remove('hidden');
-mainContent.classList.add('fade-in');
-},600);
+baixarBtn.addEventListener("click", async () => {
+  const preview = document.getElementById("preview");
+  const canvas = await html2canvas(preview);
+  const link = document.createElement("a");
+  link.download = "carteirinha.png";
+  link.href = canvas.toDataURL("image/png");
+  link.click();
 });

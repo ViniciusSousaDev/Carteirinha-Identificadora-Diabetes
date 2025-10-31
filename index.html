@@ -1,78 +1,69 @@
-<!doctype html>
-<option value="Outro">Outro</option>
-</select>
-</label>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carteirinha Identificadora - Diabetes</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Carteirinha Identificadora de Diabetes</h1>
 
+    <form id="form">
+      <label>Nome completo:</label>
+      <input type="text" id="nome" placeholder="Ex.: Vinícius Soares" required />
 
-<label>Uso de insulina
-<select id="usesInsulin">
-<option value="Sim">Sim</option>
-<option value="Não">Não</option>
-</select>
-</label>
+      <label>Tipo de diabetes:</label>
+      <select id="tipo">
+        <option value="Tipo 1">Tipo 1</option>
+        <option value="Tipo 2">Tipo 2</option>
+      </select>
 
+      <label>Uso de insulina:</label>
+      <select id="insulina">
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+      </select>
 
-<label>Contato de emergência
-<input type="text" id="emergencyContact" maxlength="15" placeholder="(xx) xxxxx-xxxx">
-</label>
+      <label>Contato de emergência:</label>
+      <input type="text" id="contato" placeholder="(xx) xxxxx-xxxx" />
 
+      <label>Observações:</label>
+      <textarea id="observacoes" placeholder="Ex.: Usa bomba de insulina, alérgico a..."></textarea>
 
-<label>Observações
-<textarea id="notes" maxlength="200" placeholder="Ex.: usa bomba de insulina, alérgico a penicilina"></textarea>
-</label>
+      <label>Foto (opcional):</label>
+      <input type="file" id="foto" accept="image/*" />
 
+      <div class="buttons">
+        <button type="button" id="gerar">Gerar Carteirinha</button>
+        <button type="button" id="baixar">Baixar PNG</button>
+      </div>
+    </form>
 
-<label>Foto (opcional)
-<input type="file" id="photoInput" accept="image/*">
-</label>
+    <div id="preview" class="carteirinha">
+      <div class="header">
+        <h2>SOU DIABÉTICO</h2>
+        <p id="tipo-preview"></p>
+      </div>
+      <div class="foto-container">
+        <img id="foto-preview" src="" alt="Foto do usuário" />
+      </div>
+      <div class="info">
+        <p><strong>Nome:</strong> <span id="nome-preview"></span></p>
+        <p><strong>Uso de insulina:</strong> <span id="insulina-preview"></span></p>
+        <p><strong>Contato de emergência:</strong> <span id="contato-preview"></span></p>
+        <p><strong>Observações:</strong> <span id="observacoes-preview"></span></p>
+      </div>
+    </div>
+  </div>
 
+  <footer>
+    <p>Cuide-se bem ❤️ — Informações geradas localmente, nada é salvo na nuvem.</p>
+  </footer>
 
-<div class="actions">
-<button type="button" id="generatePdfBtn">Gerar PDF</button>
-<button type="button" id="generatePngBtn">Baixar PNG</button>
-</div>
-</form>
-
-
-<section aria-label="Pré-visualização da carteirinha">
-<h2>Pré-visualização em tempo real</h2>
-<div id="cardPreviewWrapper">
-<div id="cardPreview" class="card">
-<div class="header">
-<span class="title">SOU DIABÉTICO</span>
-<span class="type" id="previewType">Tipo 1</span>
-</div>
-<div class="content">
-<div class="photo-container">
-<img id="previewPhoto" src="" alt="Foto do usuário" class="hidden">
-</div>
-<div class="info">
-<div><strong>Nome:</strong> <span id="previewName">—</span></div>
-<div><strong>Uso de insulina:</strong> <span id="previewInsulin">—</span></div>
-<div><strong>Contato de emergência:</strong> <span id="previewContact">—</span></div>
-<div><strong>Observações:</strong> <span id="previewNotes">—</span></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-
-<p class="note">Nenhum dado é salvo. Tudo é gerado localmente no seu navegador.</p>
-</main>
-
-
-<section id="thankYouScreen" class="hidden fade-in">
-<div class="thankYou">
-<h2>Carteirinha gerada com sucesso! 🎉</h2>
-<p>Cuide-se bem! Lembre-se de monitorar sua glicemia e manter hábitos saudáveis. A diabetes pode ser desafiadora, mas com informação e cuidado, é possível viver plenamente. ❤️</p>
-<button id="backBtn">Voltar ao início</button>
-</div>
-</section>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
