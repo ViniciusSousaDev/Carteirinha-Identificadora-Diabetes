@@ -13,6 +13,10 @@
         
         <div class="content-wrapper">
             <form id="carteirinhaForm">
+                <label for="foto">Foto (Opcional):</label>
+                <input type="file" id="foto" accept="image/*">
+                <div class="image-preview" id="imagePreview"></div>
+
                 <label for="nome">Nome Completo:</label>
                 <input type="text" id="nome" maxlength="30" required>
 
@@ -48,38 +52,47 @@
             <div class="preview-container">
                 <h2>Preview da Carteirinha</h2>
                 <div id="preview" class="carteirinha-preview">
-                    <div class="carteirinha-header">
-                        <h3>SOU DIABÉTICO</h3>
-                        <div class="carteirinha-tipo" id="preview-tipo">Tipo 1</div>
+                    <div class="carteirinha-photo" id="preview-photo">
+                        <div class="photo-placeholder">Foto</div>
                     </div>
                     <div class="carteirinha-content">
-                        <div class="carteirinha-info">
-                            <div class="info-item">
-                                <div class="info-label">Nome</div>
-                                <div class="info-value" id="preview-nome">-</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">Contato de Emergência</div>
-                                <div class="info-value" id="preview-contato">-</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">Parentesco</div>
-                                <div class="info-value" id="preview-parentesco">-</div>
-                            </div>
+                        <div class="carteirinha-header">
+                            <h3>SOU DIABÉTICO</h3>
+                            <div class="carteirinha-tipo" id="preview-tipo">Tipo 1</div>
                         </div>
                         <div class="carteirinha-info">
-                            <div class="info-item">
-                                <div class="info-label">Nascimento</div>
-                                <div class="info-value" id="preview-nascimento">-</div>
+                            <div class="info-column">
+                                <div class="info-item">
+                                    <div class="info-label">Nome</div>
+                                    <div class="info-value" id="preview-nome">-</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Nascimento</div>
+                                    <div class="info-value" id="preview-nascimento">-</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Contato de Emergência</div>
+                                    <div class="info-value" id="preview-contato">-</div>
+                                </div>
                             </div>
-                            <div class="info-item">
-                                <div class="info-label">Endereço</div>
-                                <div class="info-value" id="preview-endereco">-</div>
+                            <div class="info-column">
+                                <div class="info-item">
+                                    <div class="info-label">Parentesco</div>
+                                    <div class="info-value" id="preview-parentesco">-</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Endereço</div>
+                                    <div class="info-value" id="preview-endereco">-</div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-label">Medicamentos</div>
+                                    <div class="info-value" id="preview-medicamentos">-</div>
+                                </div>
                             </div>
-                            <div class="info-item">
-                                <div class="info-label">Medicamentos</div>
-                                <div class="info-value" id="preview-medicamentos">-</div>
-                            </div>
+                        </div>
+                        <div class="observacoes">
+                            <div class="info-label">Observações</div>
+                            <div class="info-value" id="preview-observacoes">-</div>
                         </div>
                     </div>
                 </div>
