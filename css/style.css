@@ -15,7 +15,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     width: 100%;
-    max-width: 900px;
+    max-width: 1000px;
 }
 
 h1 {
@@ -84,45 +84,87 @@ button:hover {
     background-color: #2980b9;
 }
 
-/* Estilo do preview da carteirinha */
+/* Estilo do preview da carteirinha - HORIZONTAL como o modelo */
 .carteirinha-preview {
     width: 100%;
-    max-width: 340px; /* 4x o tamanho real para melhor visualização */
-    height: 220px; /* 4x o tamanho real para melhor visualização */
-    background-color: #3498db;
-    border-radius: 10px;
-    padding: 15px;
+    max-width: 400px; /* Tamanho aumentado para melhor visualização */
+    height: 220px; /* Proporção mantida */
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 15px;
+    padding: 20px;
     box-sizing: border-box;
     color: white;
     margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.carteirinha-preview::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 0 0 0 80px;
 }
 
 .carteirinha-header {
-    text-align: center;
+    text-align: left;
     margin-bottom: 15px;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 10px;
 }
 
 .carteirinha-header h3 {
     margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.carteirinha-tipo {
     font-size: 14px;
     font-weight: bold;
+    margin-top: 5px;
+    opacity: 0.9;
 }
 
 .carteirinha-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    font-size: 11px;
+    flex-grow: 1;
+}
+
+.carteirinha-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-label {
+    font-weight: bold;
+    font-size: 9px;
+    opacity: 0.8;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-value {
     font-size: 10px;
-}
-
-.carteirinha-content p {
-    margin: 4px 0;
-    line-height: 1.3;
-}
-
-.carteirinha-content strong {
-    display: inline-block;
-    width: 120px;
+    font-weight: 500;
 }
 
 @media (max-width: 768px) {
@@ -132,5 +174,11 @@ button:hover {
     
     .carteirinha-preview {
         max-width: 100%;
+        height: 200px;
+    }
+    
+    .carteirinha-content {
+        grid-template-columns: 1fr;
+        gap: 6px;
     }
 }

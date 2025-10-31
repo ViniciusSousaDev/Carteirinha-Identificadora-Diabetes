@@ -31,7 +31,13 @@
                 <input type="text" id="medicamentos" maxlength="50">
 
                 <label for="contato">Contato de Emergência:</label>
-                <input type="text" id="contato" maxlength="20">
+                <input type="text" id="contato" maxlength="20" placeholder="(11) 91234-5678">
+
+                <label for="parentesco">Parentesco:</label>
+                <input type="text" id="parentesco" maxlength="20" placeholder="Mãe">
+
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" maxlength="50" placeholder="Rua Exemplo, 123 - Cidade/UF">
 
                 <label for="observacoes">Observações:</label>
                 <textarea id="observacoes" maxlength="100"></textarea>
@@ -43,15 +49,38 @@
                 <h2>Preview da Carteirinha</h2>
                 <div id="preview" class="carteirinha-preview">
                     <div class="carteirinha-header">
-                        <h3>CARTEIRINHA DE DIABÉTICO</h3>
+                        <h3>SOU DIABÉTICO</h3>
+                        <div class="carteirinha-tipo" id="preview-tipo">Tipo 1</div>
                     </div>
                     <div class="carteirinha-content">
-                        <p><strong>Nome:</strong> <span id="preview-nome">-</span></p>
-                        <p><strong>Nascimento:</strong> <span id="preview-nascimento">-</span></p>
-                        <p><strong>Tipo:</strong> <span id="preview-tipo">-</span></p>
-                        <p><strong>Medicamentos:</strong> <span id="preview-medicamentos">-</span></p>
-                        <p><strong>Contato Emergência:</strong> <span id="preview-contato">-</span></p>
-                        <p><strong>Observações:</strong> <span id="preview-observacoes">-</span></p>
+                        <div class="carteirinha-info">
+                            <div class="info-item">
+                                <div class="info-label">Nome</div>
+                                <div class="info-value" id="preview-nome">-</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Contato de Emergência</div>
+                                <div class="info-value" id="preview-contato">-</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Parentesco</div>
+                                <div class="info-value" id="preview-parentesco">-</div>
+                            </div>
+                        </div>
+                        <div class="carteirinha-info">
+                            <div class="info-item">
+                                <div class="info-label">Nascimento</div>
+                                <div class="info-value" id="preview-nascimento">-</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Endereço</div>
+                                <div class="info-value" id="preview-endereco">-</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Medicamentos</div>
+                                <div class="info-value" id="preview-medicamentos">-</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
