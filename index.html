@@ -1,69 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carteirinha Identificadora - Diabetes</title>
-<link rel="stylesheet" href="./style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carteirinha de Diabético</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>Carteirinha Identificadora de Diabetes</h1>
+    <div class="container">
+        <h1>Gerador de Carteirinha de Diabético</h1>
+        <form id="carteirinhaForm">
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" maxlength="30" required>
 
-    <form id="form">
-      <label>Nome completo:</label>
-      <input type="text" id="nome" placeholder="Ex.: Vinícius Soares" required />
+            <label for="nascimento">Data de Nascimento:</label>
+            <input type="date" id="nascimento" required>
 
-      <label>Tipo de diabetes:</label>
-      <select id="tipo">
-        <option value="Tipo 1">Tipo 1</option>
-        <option value="Tipo 2">Tipo 2</option>
-      </select>
+            <label for="tipo">Tipo de Diabetes:</label>
+            <select id="tipo" required>
+                <option value="">Selecione</option>
+                <option value="Tipo 1">Tipo 1</option>
+                <option value="Tipo 2">Tipo 2</option>
+                <option value="Gestacional">Gestacional</option>
+            </select>
 
-      <label>Uso de insulina:</label>
-      <select id="insulina">
-        <option value="Sim">Sim</option>
-        <option value="Não">Não</option>
-      </select>
+            <label for="medicamentos">Medicamentos:</label>
+            <input type="text" id="medicamentos" maxlength="50">
 
-      <label>Contato de emergência:</label>
-      <input type="text" id="contato" placeholder="(xx) xxxxx-xxxx" />
+            <label for="contato">Contato de Emergência:</label>
+            <input type="text" id="contato" maxlength="20">
 
-      <label>Observações:</label>
-      <textarea id="observacoes" placeholder="Ex.: Usa bomba de insulina, alérgico a..."></textarea>
+            <label for="observacoes">Observações:</label>
+            <textarea id="observacoes" maxlength="100"></textarea>
 
-      <label>Foto (opcional):</label>
-      <input type="file" id="foto" accept="image/*" />
-
-      <div class="buttons">
-        <button type="button" id="gerar">Gerar Carteirinha</button>
-        <button type="button" id="baixar">Baixar PNG</button>
-      </div>
-    </form>
-
-    <div id="preview" class="carteirinha">
-      <div class="header">
-        <h2>SOU DIABÉTICO</h2>
-        <p id="tipo-preview"></p>
-      </div>
-      <div class="foto-container">
-        <img id="foto-preview" src="" alt="Foto do usuário" />
-      </div>
-      <div class="info">
-        <p><strong>Nome:</strong> <span id="nome-preview"></span></p>
-        <p><strong>Uso de insulina:</strong> <span id="insulina-preview"></span></p>
-        <p><strong>Contato de emergência:</strong> <span id="contato-preview"></span></p>
-        <p><strong>Observações:</strong> <span id="observacoes-preview"></span></p>
-      </div>
+            <button type="button" id="gerarPDF">Gerar PDF</button>
+        </form>
     </div>
-  </div>
 
-  <footer>
-    <p>Cuide-se bem ❤️ — Informações geradas localmente, nada é salvo na nuvem.</p>
-  </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="./js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

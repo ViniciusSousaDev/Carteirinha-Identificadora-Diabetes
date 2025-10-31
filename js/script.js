@@ -1,45 +1,34 @@
-const form = document.getElementById("form");
-const gerarBtn = document.getElementById("gerar");
-const baixarBtn = document.getElementById("baixar");
+document.getElementById("gerarPDF").addEventListener("click", () => {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: [85, 55] // tamanho de carteirinha aproximado
+    });
 
-const nomePreview = document.getElementById("nome-preview");
-const tipoPreview = document.getElementById("tipo-preview");
-const insulinaPreview = document.getElementById("insulina-preview");
-const contatoPreview = document.getElementById("contato-preview");
-const observacoesPreview = document.getElementById("observacoes-preview");
-const fotoPreview = document.getElementById("foto-preview");
+    const nome = document.getElementById("nome").value;
+    const nascimento = document.getElementById("nascimento").value;
+    const tipo = document.getElementById("tipo").value;
+    const medicamentos = document.getElementById("medicamentos").value;
+    const contato = document.getElementById("contato").value;
+    const observacoes = document.getElementById("observacoes").value;
 
-document.getElementById("foto").addEventListener("change", (event) => {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      fotoPreview.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-  }
-});
+    // Fundo da carteirinha
+    doc.setFillColor(52, 152, 219);
+    doc.rect(0, 0, 85, 55, "F");
 
-function atualizarPreview() {
-  nomePreview.textContent = document.getElementById("nome").value || "—";
-  tipoPreview.textContent = document.getElementById("tipo").value || "—";
-  insulinaPreview.textContent = document.getElementById("insulina").value || "—";
-  contatoPreview.textContent = document.getElementById("contato").value || "—";
-  observacoesPreview.textContent = document.getElementById("observacoes").value || "—";
-}
+    // Informações do usuário
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(10);
+    doc.text("CARTEIRINHA DE DIABÉTICO", 42.5, 8, { align: "center" });
 
-form.addEventListener("input", atualizarPreview);
+    doc.setFontSize(8);
+    doc.text(`Nome: ${nome}`, 5, 20);
+    doc.text(`Nascimento: ${nascimento}`, 5, 26);
+    doc.text(`Tipo: ${tipo}`, 5, 32);
+    doc.text(`Medicamentos: ${medicamentos}`, 5, 38);
+    doc.text(`Contato Emergência: ${contato}`, 5, 44);
+    doc.text(`Observações: ${observacoes}`, 5, 50);
 
-gerarBtn.addEventListener("click", () => {
-  atualizarPreview();
-  alert("Carteirinha gerada com sucesso 🎉");
-});
-
-baixarBtn.addEventListener("click", async () => {
-  const preview = document.getElementById("preview");
-  const canvas = await html2canvas(preview);
-  const link = document.createElement("a");
-  link.download = "carteirinha.png";
-  link.href = canvas.toDataURL("image/png");
-  link.click();
+    doc.save("carteirinha.pdf");
 });
