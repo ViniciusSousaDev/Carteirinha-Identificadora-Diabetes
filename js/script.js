@@ -1,3 +1,23 @@
+// Atualizar preview em tempo real
+function atualizarPreview() {
+    document.getElementById("preview-nome").textContent = document.getElementById("nome").value || "-";
+    document.getElementById("preview-nascimento").textContent = document.getElementById("nascimento").value || "-";
+    document.getElementById("preview-tipo").textContent = document.getElementById("tipo").value || "-";
+    document.getElementById("preview-medicamentos").textContent = document.getElementById("medicamentos").value || "-";
+    document.getElementById("preview-contato").textContent = document.getElementById("contato").value || "-";
+    document.getElementById("preview-observacoes").textContent = document.getElementById("observacoes").value || "-";
+}
+
+// Adicionar event listeners para todos os campos do formulário
+document.querySelectorAll("#carteirinhaForm input, #carteirinhaForm select, #carteirinhaForm textarea").forEach(element => {
+    element.addEventListener("input", atualizarPreview);
+    element.addEventListener("change", atualizarPreview);
+});
+
+// Inicializar o preview
+atualizarPreview();
+
+// Gerar PDF (código original mantido)
 document.getElementById("gerarPDF").addEventListener("click", () => {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({

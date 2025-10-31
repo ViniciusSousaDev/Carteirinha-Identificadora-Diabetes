@@ -10,32 +10,52 @@
 <body>
     <div class="container">
         <h1>Gerador de Carteirinha de Diabético</h1>
-        <form id="carteirinhaForm">
-            <label for="nome">Nome Completo:</label>
-            <input type="text" id="nome" maxlength="30" required>
+        
+        <div class="content-wrapper">
+            <form id="carteirinhaForm">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" maxlength="30" required>
 
-            <label for="nascimento">Data de Nascimento:</label>
-            <input type="date" id="nascimento" required>
+                <label for="nascimento">Data de Nascimento:</label>
+                <input type="date" id="nascimento" required>
 
-            <label for="tipo">Tipo de Diabetes:</label>
-            <select id="tipo" required>
-                <option value="">Selecione</option>
-                <option value="Tipo 1">Tipo 1</option>
-                <option value="Tipo 2">Tipo 2</option>
-                <option value="Gestacional">Gestacional</option>
-            </select>
+                <label for="tipo">Tipo de Diabetes:</label>
+                <select id="tipo" required>
+                    <option value="">Selecione</option>
+                    <option value="Tipo 1">Tipo 1</option>
+                    <option value="Tipo 2">Tipo 2</option>
+                    <option value="Gestacional">Gestacional</option>
+                </select>
 
-            <label for="medicamentos">Medicamentos:</label>
-            <input type="text" id="medicamentos" maxlength="50">
+                <label for="medicamentos">Medicamentos:</label>
+                <input type="text" id="medicamentos" maxlength="50">
 
-            <label for="contato">Contato de Emergência:</label>
-            <input type="text" id="contato" maxlength="20">
+                <label for="contato">Contato de Emergência:</label>
+                <input type="text" id="contato" maxlength="20">
 
-            <label for="observacoes">Observações:</label>
-            <textarea id="observacoes" maxlength="100"></textarea>
+                <label for="observacoes">Observações:</label>
+                <textarea id="observacoes" maxlength="100"></textarea>
 
-            <button type="button" id="gerarPDF">Gerar PDF</button>
-        </form>
+                <button type="button" id="gerarPDF">Gerar PDF</button>
+            </form>
+
+            <div class="preview-container">
+                <h2>Preview da Carteirinha</h2>
+                <div id="preview" class="carteirinha-preview">
+                    <div class="carteirinha-header">
+                        <h3>CARTEIRINHA DE DIABÉTICO</h3>
+                    </div>
+                    <div class="carteirinha-content">
+                        <p><strong>Nome:</strong> <span id="preview-nome">-</span></p>
+                        <p><strong>Nascimento:</strong> <span id="preview-nascimento">-</span></p>
+                        <p><strong>Tipo:</strong> <span id="preview-tipo">-</span></p>
+                        <p><strong>Medicamentos:</strong> <span id="preview-medicamentos">-</span></p>
+                        <p><strong>Contato Emergência:</strong> <span id="preview-contato">-</span></p>
+                        <p><strong>Observações:</strong> <span id="preview-observacoes">-</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="js/script.js"></script>
